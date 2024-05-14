@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidBody2D;
     private float _speed = 2.75f;
     private float _jumpForce = 5f;
+    private PlayerAnimation _playerAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Rigid body 2D is null!");
         }
+
+        _playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     // Update is called once per frame
@@ -57,6 +60,10 @@ public class Player : MonoBehaviour
     {
         // Horizontal input for left/right
         float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        // Calling PlayerAnimation script to update animation from idle to run
+        _playerAnimation.Run(horizontalInput);
+        _playerAnimation.Flip(horizontalInput);
 
         // Current velocity = new velocity (x, current velocity.y)
         _rigidBody2D.velocity = new Vector2(horizontalInput * _speed, _rigidBody2D.velocity.y);
