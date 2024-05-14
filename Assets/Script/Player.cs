@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     // Get handle to rigid body
     private Rigidbody2D _rigidBody2D;
+    private float _speed = 2.75f;
     private float _jumpForce = 5f;
 
     // Start is called before the first frame update
@@ -58,6 +59,6 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
         // Current velocity = new velocity (x, current velocity.y)
-        _rigidBody2D.velocity = new Vector2(horizontalInput, _rigidBody2D.velocity.y);
+        _rigidBody2D.velocity = new Vector2(horizontalInput * _speed, _rigidBody2D.velocity.y);
     }
 }
