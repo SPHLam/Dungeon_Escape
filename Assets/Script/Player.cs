@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -25,9 +27,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Move();
-        
+
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround())
         {
             Jump();
@@ -41,8 +42,7 @@ public class Player : MonoBehaviour
 
         if (hitInfo.collider != null) // hit something below, aka the ground
         {
-            // Debug.Log("Hit: " + hitInfo.collider.name);
-            // Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.green);
+            Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.green);
             return true;
         }
         else
@@ -51,9 +51,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator WaitUntilHitTheGround()
+    {
+        yield return new WaitForSeconds(1.0f);
+        _playerAnimation.Jump(false);
+    }
+
     private void Jump()
     {
+        _playerAnimation.Jump(true);
         _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, _jumpForce);
+        StartCoroutine(WaitUntilHitTheGround());
     }
 
     private void Move()

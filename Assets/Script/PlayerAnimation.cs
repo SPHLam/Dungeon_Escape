@@ -41,4 +41,9 @@ public class PlayerAnimation : MonoBehaviour
             _spriteRender.flipX = false;
         }
     }
+
+    public void Jump(bool isJumping)
+    {
+        _animator.SetBool("Jump", isJumping);
+    }
 }
