@@ -29,9 +29,12 @@ public class Player : MonoBehaviour
     {
         Move();
 
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround())
+        if (isOnGround())
         {
-            Jump();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
         }
     }
 
