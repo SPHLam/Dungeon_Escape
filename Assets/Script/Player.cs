@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
             {
                 Jump();
             }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+            }
         }
     }
 
@@ -56,7 +61,7 @@ public class Player : MonoBehaviour
 
     IEnumerator WaitUntilHitTheGround()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.1f);
         _playerAnimation.Jump(false);
     }
 
@@ -65,6 +70,11 @@ public class Player : MonoBehaviour
         _playerAnimation.Jump(true);
         _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, _jumpForce);
         StartCoroutine(WaitUntilHitTheGround());
+    }
+
+    private void Attack()
+    {
+        _playerAnimation.Attack();
     }
 
     private void Move()
