@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator _animator;
+    private Animator _swordAnimator;
     private SpriteRenderer _spriteRender;
 
     // Start is called before the first frame update
     void Start()
     {
-        _animator = GetComponentInChildren<Animator>();
+        _animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
         if (_animator == null)
         {
             Debug.LogError("Animator is null!");
@@ -20,6 +21,12 @@ public class PlayerAnimation : MonoBehaviour
         if (_spriteRender == null)
         {
             Debug.LogError("Sprite render is null!");
+        }
+
+        _swordAnimator = transform.GetChild(1).gameObject.GetComponent<Animator>();
+        if (_swordAnimator == null)
+        {
+            Debug.LogError("Sword Arc animator is null!");
         }
     }
 
@@ -50,5 +57,6 @@ public class PlayerAnimation : MonoBehaviour
     public void Attack()
     {
         _animator.SetTrigger("Attack");
+        _swordAnimator.SetTrigger("SwordAnimation");
     }
 }
