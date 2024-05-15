@@ -42,7 +42,7 @@ public class MossGiant : Enemy
         // ** cant use else becuz the position between 2 way points
         float step = speed * Time.deltaTime;
 
-        _spriteRenderer.flipX = _isFlipped;
+        _spriteRenderer.flipX = _isFlipped; // Model animation flip side
 
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, step);
 
@@ -52,7 +52,7 @@ public class MossGiant : Enemy
 
             if (_targetPosition == pointB.position)
             {
-                _isFlipped = true;
+                _isFlipped = true; // Flip the animation for route reverse
                 _targetPosition = pointA.position;
             }
                 

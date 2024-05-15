@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     // Get handle to rigid body
     private Rigidbody2D _rigidBody2D;
     private float _speed = 2.75f;
-    private float _jumpForce = 5f;
+    private float _jumpForce = 7.5f;
     private PlayerAnimation _playerAnimation;
 
     // Start is called before the first frame update
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
 
     IEnumerator WaitUntilHitTheGround()
     {
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(1.5f);
         _playerAnimation.Jump(false);
     }
 
