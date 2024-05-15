@@ -7,26 +7,33 @@ public class PlayerAnimation : MonoBehaviour
     private Animator _animator;
     private Animator _swordAnimator;
     private SpriteRenderer _spriteRender;
+    private SpriteRenderer _swordSpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        _animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        _animator = transform.GetChild(0).GetComponent<Animator>();
         if (_animator == null)
         {
             Debug.LogError("Animator is null!");
         }
 
-        _spriteRender = GetComponentInChildren<SpriteRenderer>();
+        _spriteRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
         if (_spriteRender == null)
         {
             Debug.LogError("Sprite render is null!");
         }
 
-        _swordAnimator = transform.GetChild(1).gameObject.GetComponent<Animator>();
+        _swordAnimator = transform.GetChild(1).GetComponent<Animator>();
         if (_swordAnimator == null)
         {
             Debug.LogError("Sword Arc animator is null!");
+        }
+
+        _swordSpriteRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        if (_swordSpriteRenderer == null)
+        {
+            Debug.LogError("Sword Arc sprite renderer is null!");
         }
     }
 
@@ -42,10 +49,12 @@ public class PlayerAnimation : MonoBehaviour
         if (horizontalInput < 0)
         {
             _spriteRender.flipX = true;
+            _swordSpriteRenderer.flipY = true;
         }
         else if (horizontalInput > 0)
         {
             _spriteRender.flipX = false;
+            _swordSpriteRenderer.flipY = false;
         }
     }
 
