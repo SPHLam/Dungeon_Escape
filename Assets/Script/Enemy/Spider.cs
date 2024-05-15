@@ -12,7 +12,7 @@ public class Spider : Enemy
 
     public override void Attack()
     {
-        Debug.Log("Spider attack!");
+        
     }
 
     public override void Update()
