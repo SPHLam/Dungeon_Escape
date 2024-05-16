@@ -8,7 +8,8 @@ public abstract class Enemy : MonoBehaviour
     protected int speed;
     protected int gems;
     public Transform pointA, pointB;
-    protected bool isFlipped;
+    protected bool isFlipped; // Flip the sprite when reversing the route
+    protected bool isHit; // Hit
 
     protected Vector3 targetPosition;
     protected Animator animator;
@@ -33,7 +34,10 @@ public abstract class Enemy : MonoBehaviour
 
         spriteRenderer.flipX = isFlipped; // Model animation flip side
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        if (!isHit)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        }
 
         if (Vector3.Distance(transform.position, targetPosition) < 0.001f)
         {

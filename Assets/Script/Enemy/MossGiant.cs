@@ -11,7 +11,7 @@ public class MossGiant : Enemy, IDamageable
     {
         base.Init();
         speed = 2;
-        health = 20;
+        health = 50;
         Health = health;
     }
 
@@ -23,7 +23,8 @@ public class MossGiant : Enemy, IDamageable
     public void Damage(int damage)
     {
         Health -= damage;
-
+        animator.SetTrigger("Hit");
+        isHit = true;
         if (Health <= 0)
         {
             Destroy(this.gameObject);
