@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spider : Enemy
+public class Spider : Enemy, IDamageable
 {
+    public int Health { get; set; }
     // Start is called before the first frame update
     public override void Init()
     {
@@ -14,5 +15,9 @@ public class Spider : Enemy
     public override void Attack()
     {
         
+    }
+    public void Damage(int damage)
+    {
+
     }
 }
