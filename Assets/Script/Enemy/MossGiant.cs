@@ -11,6 +11,7 @@ public class MossGiant : Enemy, IDamageable
     {
         base.Init();
         speed = 2;
+        health = 20;
         Health = health;
     }
 
@@ -21,6 +22,11 @@ public class MossGiant : Enemy, IDamageable
 
     public void Damage(int damage)
     {
-        
+        Health -= damage;
+
+        if (Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
