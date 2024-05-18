@@ -95,7 +95,6 @@ public abstract class Enemy : MonoBehaviour
     {
         if (Vector3.Distance(player.transform.position, transform.position) >= 2f)
         {
-            Debug.Log(player.transform.position);
             isHit = false;
             animator.SetBool("Combat", false);
         }

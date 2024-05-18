@@ -4,13 +4,15 @@ using Unity.Burst.CompilerServices;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     // Get handle to rigid body
     private Rigidbody2D _rigidBody2D;
     private float _speed = 2.75f;
     private float _jumpForce = 7.5f;
     private PlayerAnimation _playerAnimation;
+
+    public int Health { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class Player : MonoBehaviour
         }
 
         _playerAnimation = GetComponent<PlayerAnimation>();
+
+        Health = 30;
     }
 
     // Update is called once per frame
@@ -88,5 +92,17 @@ public class Player : MonoBehaviour
 
         // Current velocity = new velocity (x, current velocity.y)
         _rigidBody2D.velocity = new Vector2(horizontalInput * _speed, _rigidBody2D.velocity.y);
+    }
+
+    public void Damage(int damage)
+    {
+        Debug.Log("Player Damage!");
+        Health -= damage;
+        
+        if (Health <= 0)
+        {
+            Debug.Log("Player Destroyed!");
+            Destroy(this.gameObject);
+        }
     }
 }
