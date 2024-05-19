@@ -18,6 +18,6 @@ public class Skeleton : Enemy, IDamageable
     }
     public void Damage(int damage)
     {
-
+        Debug.Log("Skeleton hit!");
     }
 }

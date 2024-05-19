@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour
 
         if (targetHit != null && !_hasBeenHit) // Hit something with an IDamageable interface
         {
+            Debug.Log("Hit: " + collision.name);
             targetHit.Damage(10);
             _hasBeenHit = true;
             StartCoroutine(AttackCoolDown());
