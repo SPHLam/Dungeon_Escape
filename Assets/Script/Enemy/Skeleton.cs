@@ -10,6 +10,8 @@ public class Skeleton : Enemy, IDamageable
     {
         base.Init();
         speed = 1;
+        health = 40;
+        Health = health;
     }
 
     public override void Attack()
@@ -18,6 +20,15 @@ public class Skeleton : Enemy, IDamageable
     }
     public void Damage(int damage)
     {
-        Debug.Log("Skeleton hit!");
+        Health -= damage;
+        isHit = true;
+
+        animator.SetTrigger("Hit");
+        animator.SetBool("Combat", true);
+
+        if (Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

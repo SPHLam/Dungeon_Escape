@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, IDamageable
 {
     // Get handle to rigid body
     private Rigidbody2D _rigidBody2D;
-    private float _speed = 2.75f;
+    private float _speed = 6.75f;
     private float _jumpForce = 7.5f;
     private PlayerAnimation _playerAnimation;
 
