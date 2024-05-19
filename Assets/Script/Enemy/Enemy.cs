@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     public Transform pointA, pointB;
     protected bool isFlipped; // Flip the sprite when reversing the route
     protected bool isHit; // Hit
+    protected bool isDead;
 
     protected Vector3 targetPosition;
     protected Animator animator;
@@ -89,6 +90,11 @@ public abstract class Enemy : MonoBehaviour
         {
             return;
         }
+        else if (isDead == true)
+        {
+            return;
+        }
+
         Move();
     }
     public virtual void BackToIdleFromCombat()

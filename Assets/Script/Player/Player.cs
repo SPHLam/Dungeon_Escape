@@ -101,8 +101,7 @@ public class Player : MonoBehaviour, IDamageable
         
         if (Health <= 0)
         {
-            Debug.Log("Player Destroyed!");
-            Destroy(this.gameObject);
+            _playerAnimation.Death();
         }
     }
 }
