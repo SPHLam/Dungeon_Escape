@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spider : Enemy, IDamageable
 {
+    public GameObject acid;
     public int Health { get; set; }
 
     // Start is called before the first frame update
@@ -11,7 +12,7 @@ public class Spider : Enemy, IDamageable
     {
         base.Init();
         speed = 1;
-        health = 30;
+        health = 10;
         Health = health;
     }
 
@@ -22,7 +23,8 @@ public class Spider : Enemy, IDamageable
 
     public override void Attack()
     {
-        
+        // Instantiate the Acid
+        Instantiate(acid, transform.position, Quaternion.identity);
     }
 
     public void Damage(int damage)
