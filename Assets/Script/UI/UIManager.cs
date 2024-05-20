@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     public Text playerDiamondCountText;
 
+    public Image selectionImage;
+
     private void Awake()
     {
         _instance = this;
