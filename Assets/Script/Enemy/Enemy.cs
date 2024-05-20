@@ -18,6 +18,8 @@ public abstract class Enemy : MonoBehaviour
 
     protected Player player;
 
+    public GameObject diamondPrefab;
+
     public virtual void Init()
     {
         targetPosition = pointB.position;

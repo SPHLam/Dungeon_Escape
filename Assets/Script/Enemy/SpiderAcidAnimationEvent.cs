@@ -8,7 +8,7 @@ public class SpiderAcidAnimationEvent : MonoBehaviour
     private Spider _spider; 
     void Start()
     {
-        // Asign handle to the Spider
+        // Assign handle to the Spider
         _spider = GameObject.Find("Spider_Enemy").GetComponent<Spider>();
     }
     public void Fire()

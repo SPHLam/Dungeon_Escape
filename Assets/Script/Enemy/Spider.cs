@@ -38,6 +38,13 @@ public class Spider : Enemy, IDamageable
         {
             isDead = true;
             animator.SetTrigger("Death");
+            SpawnDiamonds();
         }
+    }
+    private void SpawnDiamonds()
+    {
+        Instantiate(diamondPrefab, transform.position, Quaternion.identity);
+        Instantiate(diamondPrefab, transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity);
+        Instantiate(diamondPrefab, transform.position + new Vector3(-0.5f, 0, 0), Quaternion.identity);
     }
 }
