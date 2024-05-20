@@ -8,8 +8,9 @@ public class Player : MonoBehaviour, IDamageable
 {
     // Get handle to rigid body
     private Rigidbody2D _rigidBody2D;
-    private float _speed = 6.75f;
+    private float _speed = 2.75f;
     private float _jumpForce = 7.5f;
+    private int _diamond = 0;
     private PlayerAnimation _playerAnimation;
 
     public int Health { get; set; }
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Diamond: " + _diamond);
         Move();
 
         if (isOnGround())
@@ -103,5 +105,10 @@ public class Player : MonoBehaviour, IDamageable
         {
             _playerAnimation.Death();
         }
+    }
+
+    public void addDiamonds(int numsOfDiamond)
+    {
+        _diamond += numsOfDiamond;
     }
 }

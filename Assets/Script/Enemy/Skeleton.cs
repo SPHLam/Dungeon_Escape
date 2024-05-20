@@ -9,6 +9,7 @@ public class Skeleton : Enemy, IDamageable
     public override void Init()
     {
         base.Init();
+        gems = 4;
         speed = 1;
         health = 40;
         Health = health;

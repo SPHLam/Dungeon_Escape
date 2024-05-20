@@ -11,6 +11,7 @@ public class Spider : Enemy, IDamageable
     public override void Init()
     {
         base.Init();
+        gems = 3;
         speed = 1;
         health = 10;
         Health = health;

@@ -10,6 +10,7 @@ public class MossGiant : Enemy, IDamageable
     public override void Init()
     {
         base.Init();
+        gems = 5;
         speed = 2;
         health = 50;
         Health = health;
