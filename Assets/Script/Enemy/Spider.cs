@@ -30,6 +30,9 @@ public class Spider : Enemy, IDamageable
 
     public void Damage(int damage)
     {
+        if (isDead == true)
+            return;
+
         Health -= damage;
         animator.SetBool("Combat", true);
         isHit = true;

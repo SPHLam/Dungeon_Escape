@@ -23,6 +23,9 @@ public class MossGiant : Enemy, IDamageable
 
     public void Damage(int damage)
     {
+        if (isDead == true)
+            return;
+
         Health -= damage;
         animator.SetTrigger("Hit");
         isHit = true;
