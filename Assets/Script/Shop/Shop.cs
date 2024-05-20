@@ -5,11 +5,21 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     public GameObject shopPanel;
+    public UIManager uiManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            Player player = collision.GetComponent<Player>();
+
+            int playerDiamondCount = player.getDiamonds();
+
+            if (player != null)
+            {
+                uiManager.UpdatePlayerDiamondText(playerDiamondCount);
+            }
+
             shopPanel.SetActive(true);
         }
     }

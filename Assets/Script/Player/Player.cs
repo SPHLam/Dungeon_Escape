@@ -111,4 +111,9 @@ public class Player : MonoBehaviour, IDamageable
     {
         _diamond += numsOfDiamond;
     }
+
+    public int getDiamonds()
+    {
+        return _diamond;
+    }
 }
