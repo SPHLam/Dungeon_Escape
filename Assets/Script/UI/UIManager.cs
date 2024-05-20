@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour
         playerDiamondCountText.text = "Current: " + diamondCount + "G";
     }
     
-    public void Test()
+    public void UpdateShopSelectionItem(int yPos)
     {
-        Debug.Log("Im stupid"!);
+        selectionImage.rectTransform.anchoredPosition = new Vector2(selectionImage.rectTransform.anchoredPosition.x, yPos);
     }
 }
