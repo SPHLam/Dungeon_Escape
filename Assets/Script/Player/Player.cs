@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour, IDamageable
 {
     // Get handle to rigid body
     private Rigidbody2D _rigidBody2D;
-    private float _speed = 7.75f;
+    private float _speed = 2.75f;
     private float _jumpForce = 7.5f;
     private int _diamond = 1000;
     private PlayerAnimation _playerAnimation;
@@ -42,12 +43,12 @@ public class Player : MonoBehaviour, IDamageable
 
         if (isOnGround())
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (CrossPlatformInputManager.GetButtonDown("B_Button"))
             {
                 Jump();
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (CrossPlatformInputManager.GetButtonDown("A_Button"))
             {
                 Attack();
             }
@@ -91,7 +92,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Move()
     {
         // Horizontal input for left/right
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float horizontalInput = CrossPlatformInputManager.GetAxisRaw("Horizontal");
 
         // Calling PlayerAnimation script to update animation from idle to run
         _playerAnimation.Run(horizontalInput);
