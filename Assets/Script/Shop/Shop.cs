@@ -53,14 +53,17 @@ public class Shop : MonoBehaviour
         switch(itemIndex)
         {
             case 1:
+                _itemIndex = 1;
                 _itemPrice = 400;
                 uiManager.UpdateShopSelectionItem(-30);
                 break;
             case 2:
+                _itemIndex = 2;
                 _itemPrice = 100;
                 uiManager.UpdateShopSelectionItem(-130);
                 break;
             default:
+                _itemIndex = 0;
                 _itemPrice = 240;
                 uiManager.UpdateShopSelectionItem(70);
                 break;
@@ -71,6 +74,10 @@ public class Shop : MonoBehaviour
     {
         if (_player.getDiamonds() >= _itemPrice)
         {
+            if (_itemIndex == 2)
+            {
+                GameManager.Instance.hasKeyCastle = true;
+            }
             _player.subtractDiamonds(_itemPrice);
         }
         else
