@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     private Rigidbody2D _rigidBody2D;
     private float _speed = 7.75f;
     private float _jumpForce = 7.5f;
-    private int _diamond = 0;
+    private int _diamond = 1000;
     private PlayerAnimation _playerAnimation;
 
     public int Health { get; set; }
@@ -98,7 +98,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage(int damage)
     {
-        Debug.Log("Player Damage!");
         Health -= damage;
         
         if (Health <= 0)
@@ -115,5 +114,10 @@ public class Player : MonoBehaviour, IDamageable
     public int getDiamonds()
     {
         return _diamond;
+    }
+
+    public void subtractDiamonds(int numsOfDiamond)
+    {
+        _diamond -= numsOfDiamond;
     }
 }
