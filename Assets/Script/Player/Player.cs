@@ -28,13 +28,17 @@ public class Player : MonoBehaviour, IDamageable
 
         _playerAnimation = GetComponent<PlayerAnimation>();
 
-        Health = 30;
+        Health = 40;
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log("Diamond: " + _diamond);
+        if(Health <= 0)
+        {
+            return;
+        }
         Move();
 
         if (isOnGround())
@@ -100,7 +104,11 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage(int damage)
     {
+        if (Health <= 0) // Already dead
+            return;
+
         Health -= damage;
+        uiManager.UpdateHUDLives(Health / 10);
         
         if (Health <= 0)
         {

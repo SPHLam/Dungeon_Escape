@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
 
     public Image selectionImage;
     public Text playerHUDGemCountText;
+    public Image[] healthBarsHUD;
 
     private void Awake()
     {
@@ -42,5 +43,20 @@ public class UIManager : MonoBehaviour
     public void UpdateShopSelectionItem(int yPos)
     {
         selectionImage.rectTransform.anchoredPosition = new Vector2(selectionImage.rectTransform.anchoredPosition.x, yPos);
+    }
+
+    public void UpdateHUDLives(int livesRemaining)
+    {
+        for (int i = 0; i < healthBarsHUD.Length; i++)
+        {
+            if (i < livesRemaining)
+            {
+                healthBarsHUD[i].enabled = true;
+            }
+            else
+            {
+                healthBarsHUD[i].enabled = false;
+            }
+        }
     }
 }
