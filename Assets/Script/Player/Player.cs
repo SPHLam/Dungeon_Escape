@@ -15,6 +15,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public int Health { get; set; }
 
+    public UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +111,7 @@ public class Player : MonoBehaviour, IDamageable
     public void addDiamonds(int numsOfDiamond)
     {
         _diamond += numsOfDiamond;
+        uiManager.UpdateHUDDiamondText(_diamond);
     }
 
     public int getDiamonds()

@@ -79,6 +79,8 @@ public class Shop : MonoBehaviour
                 GameManager.Instance.hasKeyCastle = true;
             }
             _player.subtractDiamonds(_itemPrice);
+            uiManager.UpdatePlayerDiamondText(_player.getDiamonds());
+            uiManager.UpdateHUDDiamondText(_player.getDiamonds());
         }
         else
         {

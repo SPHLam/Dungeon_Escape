@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public Text playerDiamondCountText;
 
     public Image selectionImage;
+    public Text playerHUDGemCountText;
 
     private void Awake()
     {
@@ -31,6 +32,11 @@ public class UIManager : MonoBehaviour
     public void UpdatePlayerDiamondText(int diamondCount)
     {
         playerDiamondCountText.text = "Current: " + diamondCount + "G";
+    }
+
+    public void UpdateHUDDiamondText(int diamondCount)
+    {
+        playerHUDGemCountText.text = "" + diamondCount;
     }
     
     public void UpdateShopSelectionItem(int yPos)
